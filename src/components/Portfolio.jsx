@@ -1,4 +1,5 @@
 import { ExternalLink, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import SectionHeader from './shared/SectionHeader';
 import ScrollReveal from './shared/ScrollReveal';
 
@@ -27,6 +28,14 @@ const projects = [
     link: 'https://zesty-starlight-485b41.netlify.app/',
     status: 'Live',
   },
+  {
+    title: 'Volant Sneakers',
+    desc: 'Premium sneaker store landing page with product showcase, size selector, and bold visual design inspired by streetwear culture.',
+    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&h=500&fit=crop&q=80',
+    tags: ['React', 'E-Commerce', 'Landing Page'],
+    internalLink: '/sneakers',
+    status: 'Live',
+  },
 ];
 
 const Portfolio = () => (
@@ -37,7 +46,7 @@ const Portfolio = () => (
         title="Recent Projects"
         subtitle="Real sites we've built for real Nashville businesses."
       />
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-2 gap-8">
         {projects.map((project, i) => (
           <ScrollReveal key={i} delay={i * 0.1}>
             <div className="group rounded-2xl overflow-hidden border border-white/10 hover:border-purple-500/40 transition-all duration-300 bg-white/[0.02] h-full flex flex-col">
@@ -69,7 +78,15 @@ const Portfolio = () => (
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
                 <p className="text-gray-400 text-sm mb-4 flex-1">{project.desc}</p>
-                {project.link ? (
+                {project.internalLink ? (
+                  <Link
+                    to={project.internalLink}
+                    className="inline-flex items-center gap-2 text-purple-400 hover:text-white font-semibold text-sm transition-colors group/link"
+                  >
+                    View Live Site
+                    <ExternalLink size={14} className="group-hover/link:translate-x-1 transition-transform" />
+                  </Link>
+                ) : project.link ? (
                   <a
                     href={project.link}
                     target="_blank"
