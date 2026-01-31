@@ -1,0 +1,97 @@
+@import "tailwindcss" source("../**/*.{html,js,jsx,ts,tsx}");
+
+@theme {
+  --color-brand-dark: #0F0F1A;
+  --color-brand-primary: #6D28D9;
+  --color-brand-accent: #D946EF;
+  --color-brand-light: #E2E8F0;
+  --font-sans: 'Inter', sans-serif;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Override Vite defaults */
+#root {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+body {
+  background-color: #05050A;
+  color: #E2E8F0;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0F0F1A;
+}
+::-webkit-scrollbar-thumb {
+  background: #6D28D9;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D946EF;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animated gradient orbs for hero */
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 8s ease-in-out 2s infinite;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #6D28D9, #D946EF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Dark theme form inputs */
+input, select, textarea {
+  color-scheme: dark;
+}
+
+select option {
+  background-color: #1a1a2e;
+  color: #E2E8F0;
+}
+
+select option:checked,
+select option:hover {
+  background-color: #6D28D9;
+  color: white;
+}
+
+/* Selection color */
+::selection {
+  background: #6D28D9;
+  color: white;
+}
