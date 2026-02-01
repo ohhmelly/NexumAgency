@@ -1,19 +1,19 @@
 @import "tailwindcss" source("../**/*.{html,js,jsx,ts,tsx}");
 
 @theme {
-  --color-brand-dark: #0F0F1A;
-  --color-brand-primary: #6D28D9;
-  --color-brand-accent: #D946EF;
-  --color-brand-light: #E2E8F0;
+  --color-brand-dark: #000000;
+  --color-brand-primary: #ECD06F;
+  --color-brand-accent: #ECD06F;
+  --color-brand-light: #FFFFFF;
+  --color-brand-muted: #888888;
   --font-sans: 'Inter', sans-serif;
+  --font-display: 'Syne', sans-serif;
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Override Vite defaults */
 #root {
   max-width: none;
   margin: 0;
@@ -22,56 +22,37 @@ html {
 }
 
 body {
-  background-color: #05050A;
-  color: #E2E8F0;
+  background-color: #000000;
+  color: #FFFFFF;
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar — gold */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0F0F1A;
+  background: #000000;
 }
 ::-webkit-scrollbar-thumb {
-  background: #6D28D9;
-  border-radius: 4px;
+  background: #ECD06F;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #D946EF;
+  background: #d4b85e;
 }
 
-/* Glassmorphism utility */
-.glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* Selection — gold */
+::selection {
+  background: #ECD06F;
+  color: #000000;
 }
 
-/* Animated gradient orbs for hero */
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -50px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.9); }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-float-delayed {
-  animation: float 8s ease-in-out 2s infinite;
-}
-
-/* Gradient text utility */
+/* Gold accent text utility */
 .gradient-text {
-  background: linear-gradient(135deg, #6D28D9, #D946EF);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ECD06F;
+  -webkit-text-fill-color: #ECD06F;
 }
 
 /* Dark theme form inputs */
@@ -80,20 +61,14 @@ input, select, textarea {
 }
 
 select option {
-  background-color: #1a1a2e;
-  color: #E2E8F0;
+  background-color: #111111;
+  color: #FFFFFF;
 }
 
 select option:checked,
 select option:hover {
-  background-color: #6D28D9;
-  color: white;
-}
-
-/* Selection color */
-::selection {
-  background: #6D28D9;
-  color: white;
+  background-color: #ECD06F;
+  color: #000000;
 }
 
 /* Marquee scrolling animation */
@@ -103,5 +78,5 @@ select option:hover {
 }
 
 .animate-marquee {
-  animation: marquee 20s linear infinite;
+  animation: marquee 25s linear infinite;
 }

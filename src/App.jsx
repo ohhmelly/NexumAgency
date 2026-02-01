@@ -6,7 +6,7 @@ import FencingCo from './pages/FencingCo';
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-[#05050A] text-white">
+      <div className="min-h-screen bg-black text-white">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/sneakers" element={<SneakerStore />} />

@@ -1,122 +1,140 @@
-import { ExternalLink, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import SectionHeader from './shared/SectionHeader';
 import ScrollReveal from './shared/ScrollReveal';
 
 const projects = [
   {
     title: 'Green Ridge Landscaping',
-    desc: 'A high-conversion website for a Goodlettsville landscaping firm featuring quote forms, gallery, and local SEO optimization.',
     image: 'https://images.unsplash.com/photo-1558904541-efa843a96f01?w=800&h=500&fit=crop&q=80',
-    tags: ['React', 'Tailwind CSS', 'SEO'],
+    tags: ['React', 'SEO'],
     link: 'https://cheery-sunshine-9b260a.netlify.app/',
-    status: 'Live',
   },
   {
     title: 'Auto 2.0',
-    desc: 'Next-gen automotive service center website with online booking, real-time tracking, and transparent pricing.',
     image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&h=500&fit=crop&q=80',
-    tags: ['React', 'Booking System', 'Dark Mode'],
+    tags: ['React', 'Dark Mode'],
     link: 'https://chipper-beijinho-a30d87.netlify.app/',
-    status: 'Live',
   },
   {
     title: 'Nashville Coffee Co.',
-    desc: 'Online ordering platform for a local Nashville coffee shop with mobile-first checkout and loyalty rewards.',
     image: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&h=500&fit=crop&q=80',
-    tags: ['E-Commerce', 'Online Ordering', 'Mobile'],
+    tags: ['E-Commerce', 'Mobile'],
     link: 'https://zesty-starlight-485b41.netlify.app/',
-    status: 'Live',
   },
   {
     title: 'Volant Sneakers',
-    desc: 'Premium sneaker store landing page with product showcase, size selector, and bold visual design inspired by streetwear culture.',
     image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&h=500&fit=crop&q=80',
-    tags: ['React', 'E-Commerce', 'Landing Page'],
+    tags: ['React', 'Landing Page'],
     internalLink: '/sneakers',
-    status: 'Live',
   },
   {
     title: 'IronOak Fence Co.',
-    desc: 'Professional fencing company website with service showcase, 3-step process, testimonials, and lead capture form.',
     image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=500&fit=crop&q=80',
-    tags: ['React', 'Lead Generation', 'Local Business'],
+    tags: ['Lead Gen', 'Local Business'],
     internalLink: '/fencing',
-    status: 'Live',
   },
 ];
 
-const Portfolio = () => (
-  <section id="work" className="py-20 md:py-28 bg-[#05050A]">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeader
-        tag="Portfolio"
-        title="Recent Projects"
-        subtitle="Real sites we've built for real Nashville businesses."
-      />
-      <div className="grid md:grid-cols-2 gap-8">
-        {projects.map((project, i) => (
-          <ScrollReveal key={i} delay={i * 0.1}>
-            <div className="group rounded-2xl overflow-hidden border border-white/10 hover:border-purple-500/40 transition-all duration-300 bg-white/[0.02] h-full flex flex-col">
-              {/* Image */}
-              <div className="aspect-video overflow-hidden relative">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <span className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-bold ${project.status === 'Live'
-                    ? 'bg-green-500/20 text-green-400 border border-green-500/30'
-                    : 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
-                  }`}>
-                  {project.status}
-                </span>
-              </div>
+const Portfolio = () => {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
-              {/* Info */}
-              <div className="p-6 flex flex-col flex-1">
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="px-2 py-1 rounded-md bg-white/5 text-gray-400 text-xs font-medium">
-                      {tag}
+  return (
+    <section id="work" className="py-24 md:py-40 bg-black">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+        <SectionHeader
+          tag="Portfolio"
+          title="Selected Work"
+        />
+        <div className="space-y-0">
+          {projects.map((project, i) => {
+            const isInternal = !!project.internalLink;
+            const isExternal = !!project.link;
+
+            const content = (
+              <>
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <div className="flex items-center gap-6 md:gap-10">
+                    <span className="text-sm text-[#666666] font-mono">
+                      {String(i + 1).padStart(2, '0')}
                     </span>
-                  ))}
+                    <h3 className="text-3xl md:text-5xl lg:text-7xl font-black text-white tracking-tight font-[Syne] group-hover:text-[#ECD06F] transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                  </div>
+                  <div className="flex items-center gap-4 pl-12 md:pl-0">
+                    <div className="flex gap-3">
+                      {project.tags.map((tag) => (
+                        <span key={tag} className="text-xs uppercase tracking-[0.15em] text-[#666666]">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <ArrowRight size={20} className="text-[#666666] group-hover:text-[#ECD06F] group-hover:translate-x-2 transition-all duration-300" />
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                <p className="text-gray-400 text-sm mb-4 flex-1">{project.desc}</p>
-                {project.internalLink ? (
+
+                {/* Hover image reveal */}
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={hoveredIndex === i ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="overflow-hidden"
+                >
+                  <div className="pt-6 md:pt-8 max-w-3xl ml-12 md:ml-20">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-64 md:h-80 object-cover rounded-lg"
+                      loading="lazy"
+                    />
+                  </div>
+                </motion.div>
+              </>
+            );
+
+            const className = "group block py-8 md:py-12 border-b border-white/10 hover:bg-white/[0.02] transition-colors duration-300";
+
+            return (
+              <ScrollReveal key={i} delay={i * 0.08}>
+                {isInternal ? (
                   <Link
                     to={project.internalLink}
-                    className="inline-flex items-center gap-2 text-purple-400 hover:text-white font-semibold text-sm transition-colors group/link"
+                    className={className}
+                    onMouseEnter={() => setHoveredIndex(i)}
+                    onMouseLeave={() => setHoveredIndex(null)}
                   >
-                    View Live Site
-                    <ExternalLink size={14} className="group-hover/link:translate-x-1 transition-transform" />
+                    {content}
                   </Link>
-                ) : project.link ? (
+                ) : isExternal ? (
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-purple-400 hover:text-white font-semibold text-sm transition-colors group/link"
+                    className={className}
+                    onMouseEnter={() => setHoveredIndex(i)}
+                    onMouseLeave={() => setHoveredIndex(null)}
                   >
-                    View Live Site
-                    <ExternalLink size={14} className="group-hover/link:translate-x-1 transition-transform" />
+                    {content}
                   </a>
                 ) : (
-                  <span className="inline-flex items-center gap-2 text-gray-500 font-semibold text-sm">
-                    Coming Soon
-                    <ArrowRight size={14} />
-                  </span>
+                  <div
+                    className={className}
+                    onMouseEnter={() => setHoveredIndex(i)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                  >
+                    {content}
+                  </div>
                 )}
-              </div>
-            </div>
-          </ScrollReveal>
-        ))}
+              </ScrollReveal>
+            );
+          })}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Portfolio;

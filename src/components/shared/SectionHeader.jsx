@@ -1,15 +1,21 @@
 import ScrollReveal from './ScrollReveal';
 
-const SectionHeader = ({ tag, title, subtitle }) => (
+const SectionHeader = ({ tag, title, subtitle, center = false }) => (
   <ScrollReveal>
-    <div className="text-center mb-16 max-w-3xl mx-auto">
+    <div className={`${center ? 'text-center' : 'text-left'} mb-20 md:mb-28 max-w-4xl ${center ? 'mx-auto' : ''}`}>
       {tag && (
-        <span className="inline-block px-5 py-2 rounded-full text-sm font-semibold tracking-wider uppercase bg-purple-500/10 text-purple-400 border border-purple-500/20 mb-4">
+        <span className="block text-xs uppercase tracking-[0.3em] text-[#ECD06F] mb-6 font-medium">
           {tag}
         </span>
       )}
-      <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">{title}</h2>
-      {subtitle && <p className="text-gray-400 text-lg">{subtitle}</p>}
+      <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter leading-[0.9] font-[Syne] mb-6">
+        {title}
+      </h2>
+      {subtitle && (
+        <p className="text-lg text-[#666666] max-w-xl leading-relaxed">
+          {subtitle}
+        </p>
+      )}
     </div>
   </ScrollReveal>
 );

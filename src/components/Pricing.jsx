@@ -1,4 +1,3 @@
-import { Check, Sparkles } from 'lucide-react';
 import SectionHeader from './shared/SectionHeader';
 import ScrollReveal from './shared/ScrollReveal';
 
@@ -53,56 +52,49 @@ const plans = [
 ];
 
 const Pricing = () => (
-  <section id="pricing" className="py-20 md:py-28 bg-[#05050A]">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section id="pricing" className="py-24 md:py-40 bg-black">
+    <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
       <SectionHeader
         tag="Pricing"
-        title="Simple, Transparent Pricing"
-        subtitle="No hidden fees. No surprises. Pick a plan and let's build something great."
+        title="Investment"
       />
       <div className="grid md:grid-cols-3 gap-6 lg:gap-8 items-start">
         {plans.map((plan, i) => (
           <ScrollReveal key={i} delay={i * 0.1}>
-            <div className={`relative rounded-2xl p-8 border h-full flex flex-col ${
+            <div className={`relative p-8 md:p-10 border h-full flex flex-col transition-colors duration-300 ${
               plan.popular
-                ? 'bg-gradient-to-b from-purple-900/30 to-white/5 border-purple-500/50 md:scale-105 shadow-xl shadow-purple-500/10'
-                : 'bg-white/5 border-white/10'
+                ? 'border-[#ECD06F]/40 hover:border-[#ECD06F]'
+                : 'border-white/10 hover:border-white/20'
             }`}>
-              {/* Popular badge */}
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-white text-xs font-bold flex items-center gap-1">
-                  <Sparkles size={12} />
+                <span className="text-xs uppercase tracking-[0.3em] text-[#ECD06F] mb-4 block font-medium">
                   Most Popular
-                </div>
+                </span>
               )}
 
-              {/* Plan header */}
-              <h3 className="text-xl font-bold text-white mb-1">{plan.name}</h3>
-              <p className="text-gray-500 text-sm mb-6">{plan.tagline}</p>
+              <h3 className="text-lg font-bold text-white uppercase tracking-[0.1em] mb-2">{plan.name}</h3>
+              <p className="text-sm text-[#666666] mb-8">{plan.tagline}</p>
 
-              {/* Price */}
-              <div className="mb-8">
-                <span className="text-4xl md:text-5xl font-extrabold gradient-text">{plan.price}</span>
-                <span className="text-gray-500 ml-2 text-sm">one-time</span>
+              <div className="mb-10">
+                <span className="text-5xl md:text-6xl font-black text-[#ECD06F] font-[Syne]">{plan.price}</span>
+                <span className="text-[#666666] ml-3 text-sm">one-time</span>
               </div>
 
-              {/* Features */}
-              <ul className="space-y-3 mb-8 flex-1">
+              <ul className="space-y-4 mb-10 flex-1">
                 {plan.features.map((feature, j) => (
-                  <li key={j} className="flex items-center gap-3 text-gray-300 text-sm">
-                    <Check size={16} className="text-purple-400 flex-shrink-0" />
+                  <li key={j} className="flex items-center gap-3 text-[#888888] text-sm">
+                    <span className="text-[#ECD06F] text-xs">&#8212;</span>
                     {feature}
                   </li>
                 ))}
               </ul>
 
-              {/* CTA */}
               <a
                 href="#contact"
-                className={`block text-center py-3 rounded-full font-bold transition-all hover:scale-105 ${
+                className={`block text-center py-4 font-bold text-sm uppercase tracking-[0.15em] transition-all duration-300 ${
                   plan.popular
-                    ? 'bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-lg hover:shadow-purple-500/30'
-                    : 'border border-white/20 text-white hover:bg-white/10'
+                    ? 'bg-[#ECD06F] text-black hover:bg-[#d4b85e]'
+                    : 'border border-white/20 text-white hover:border-[#ECD06F] hover:text-[#ECD06F]'
                 }`}
               >
                 Get Started
