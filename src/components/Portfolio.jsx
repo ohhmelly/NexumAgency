@@ -39,7 +39,7 @@ const projects = [
   {
     title: 'IronOak Fence Co.',
     desc: 'Professional fencing company website with service showcase, 3-step process, testimonials, and lead capture form.',
-    image: 'https://images.unsplash.com/photo-1622993366223-af4c0367a0ca?w=800&h=500&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=500&fit=crop&q=80',
     tags: ['React', 'Lead Generation', 'Local Business'],
     internalLink: '/fencing',
     status: 'Live',

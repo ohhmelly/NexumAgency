@@ -4,12 +4,12 @@ import { Phone, Mail, MapPin, Clock, Shield, Star, Users, DollarSign, ArrowRight
 import { Link } from 'react-router-dom';
 
 const services = [
-  { name: 'Wood Privacy', image: 'https://images.unsplash.com/photo-1622993366223-af4c0367a0ca?w=500&h=400&fit=crop&q=80', desc: 'Classic cedar & pine privacy fences built to last.' },
-  { name: 'Vinyl Fencing', image: 'https://images.unsplash.com/photo-1635048424329-a4907cee6666?w=500&h=400&fit=crop&q=80', desc: 'Low-maintenance vinyl in white, tan, and grey.' },
-  { name: 'Chain Link', image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=500&h=400&fit=crop&q=80', desc: 'Durable and affordable for any property size.' },
-  { name: 'Aluminum', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=500&h=400&fit=crop&q=80', desc: 'Elegant ornamental fencing with zero rust.' },
-  { name: 'Farm & Ranch', image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=500&h=400&fit=crop&q=80', desc: 'Split rail, wire, and post fencing for acreage.' },
-  { name: 'Gates & Entries', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=500&h=400&fit=crop&q=80', desc: 'Custom gates — manual, automatic, and smart access.' },
+  { name: 'Wood Privacy', image: 'https://images.unsplash.com/photo-1748908271592-d9d5690b288b?w=600&h=450&fit=crop&q=80', desc: 'Classic cedar & pine privacy fences built to last.' },
+  { name: 'Vinyl Fencing', image: 'https://images.unsplash.com/photo-1581423781632-21576609e944?w=600&h=450&fit=crop&q=80', desc: 'Low-maintenance vinyl in white, tan, and grey.' },
+  { name: 'Chain Link', image: 'https://images.unsplash.com/photo-1597924703133-83cc856609c9?w=600&h=450&fit=crop&q=80', desc: 'Durable and affordable for any property size.' },
+  { name: 'Aluminum', image: 'https://images.unsplash.com/photo-1596292696421-15130afef52d?w=600&h=450&fit=crop&q=80', desc: 'Elegant ornamental fencing with zero rust.' },
+  { name: 'Farm & Ranch', image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&h=450&fit=crop&q=80', desc: 'Split rail, wire, and post fencing for acreage.' },
+  { name: 'Gates & Entries', image: 'https://images.unsplash.com/photo-1685633225043-f2c3a4825047?w=600&h=450&fit=crop&q=80', desc: 'Custom gates — manual, automatic, and smart access.' },
 ];
 
 const whyUs = [
@@ -105,7 +105,7 @@ const FencingCo = () => {
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1622993366223-af4c0367a0ca?w=1600&h=900&fit=crop&q=80"
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1600&h=900&fit=crop&q=80"
             alt="Beautiful fence installation"
             className="w-full h-full object-cover"
           />
@@ -193,8 +193,45 @@ const FencingCo = () => {
         </div>
       </section>
 
+      {/* Gallery */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+            <span className="text-amber-700 font-semibold text-sm tracking-wider uppercase">Our Work</span>
+            <h2 className="text-3xl md:text-5xl font-black mt-2 mb-4">Recent Projects</h2>
+            <p className="text-gray-500 max-w-2xl mx-auto">Every fence we build is a reflection of our commitment to quality and craftsmanship.</p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+            {[
+              { src: 'https://images.unsplash.com/photo-1748908271592-d9d5690b288b?w=600&h=500&fit=crop&q=80', alt: 'Cedar privacy fence installation', span: 'md:row-span-2' },
+              { src: 'https://images.unsplash.com/photo-1581423781632-21576609e944?w=500&h=400&fit=crop&q=80', alt: 'White vinyl fence' },
+              { src: 'https://images.unsplash.com/photo-1596292696421-15130afef52d?w=500&h=400&fit=crop&q=80', alt: 'Black ornamental fence' },
+              { src: 'https://images.unsplash.com/photo-1685633225043-f2c3a4825047?w=500&h=400&fit=crop&q=80', alt: 'Custom wooden gate' },
+              { src: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&h=500&fit=crop&q=80', alt: 'Ranch fence with rolling hills', span: 'md:col-span-2' },
+            ].map((img, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className={`overflow-hidden rounded-2xl group ${img.span || ''}`}
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 min-h-[200px]"
+                  loading="lazy"
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Why Us */}
-      <section id="why" className="py-20 bg-white">
+      <section id="why" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
             <span className="text-amber-700 font-semibold text-sm tracking-wider uppercase">Why Choose Us</span>
