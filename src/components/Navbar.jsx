@@ -41,7 +41,17 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="flex items-center gap-2">
-              <img src="/logo.png" alt="Nexum Digital" className="h-7 w-7 rounded-md" />
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="h-9 w-9" aria-label="Nexum logo">
+                <rect x="92" y="92" width="328" height="328" rx="40" fill="none" stroke="white" strokeWidth="20"/>
+                <g fill="none" stroke="white" strokeWidth="40" strokeLinecap="round" strokeLinejoin="round" transform="translate(-24,-9)">
+                  <line x1="170" y1="360" x2="170" y2="170"/>
+                  <line x1="170" y1="170" x2="262" y2="360"/>
+                  <line x1="262" y1="360" x2="262" y2="170"/>
+                  <line x1="310" y1="180" x2="390" y2="350"/>
+                  <line x1="390" y1="180" x2="310" y2="350"/>
+                </g>
+                <circle cx="410" cy="410" r="18" fill="#ECD06F"/>
+              </svg>
               <span className="font-black text-xl tracking-wider text-white">NEXUM<span className="text-[#ECD06F]">.</span></span>
             </a>
 
